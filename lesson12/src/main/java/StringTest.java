@@ -4,6 +4,7 @@ public class StringTest {
     a = b = c = false;
     func();
     boolean bool = (a = true) || (b = true) && (c = true);
+    bool = false;
     System.out.println(a);
     System.out.println(b);
     System.out.println(c);
