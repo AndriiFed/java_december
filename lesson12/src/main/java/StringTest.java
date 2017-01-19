@@ -1,16 +1,16 @@
 public class StringTest {
   public static void main(String[] args) {
-    boolean a, b, c;
-    a = b = c = false;
-    func();
-    boolean bool = (a = true);
-    bool = false;
-    System.out.println(a);
-    System.out.println(b);
-    System.out.println(c);
-  }
+    String str = "101111000101";
+    //int number = 101111000101;
 
-  public static void func() {
-    System.out.println("hello");
+    int result = 0;
+    int power = str.length() - 1;
+    for (int i = 0; i < str.length(); i++) {
+      char symbol = str.charAt(i);
+      int digit = Character.getNumericValue(symbol);
+      result = result + (int)Math.pow(2, power) * digit;
+      power--;
+    }
+    System.out.println(result);
   }
 }
