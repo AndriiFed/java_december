@@ -3,7 +3,7 @@ public class StringTest {
     boolean a, b, c;
     a = b = c = false;
     func();
-    boolean bool = (a = true) || (b = true) && (c = true);
+    boolean bool = (a = true);
     bool = false;
     System.out.println(a);
     System.out.println(b);
