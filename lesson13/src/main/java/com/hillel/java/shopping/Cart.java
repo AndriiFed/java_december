@@ -1,10 +1,11 @@
 package com.hillel.java.shopping;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Cart {
   private int count;
-  private Product[] products;
+  private ArrayList<Product> products;
   private static final int MAX_AMOUNT = 10;
 
   public Cart() {
@@ -13,22 +14,13 @@ public class Cart {
   }
 
   public void addProduct(Product product) {
-    if (count == MAX_AMOUNT) {
-      System.out.println("Корзина заполнена");
-      return;
-    }
-    products[count] = product;
+    products.add(product);
     count++;
   }
 
   public void deleteProduct() {
-    if (count == 0) {
-      System.out.println("Больше не сущетвует товаров в корзине");
-      return;
-    }
-
     count--;
-    products[count] = null;
+    products.remove(count);
   }
 
   @Override
