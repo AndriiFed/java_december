@@ -1,6 +1,6 @@
 package projects.game;
 
-public class TicTacToe {
+public class TicTacToe extends Game {
 
     private Board board = new Board();
 
@@ -16,28 +16,27 @@ public class TicTacToe {
         currentPlayer = player1;
     }
 
-    public String startGame() {
-        while (!gameFinished()) {
-            makeMove();
-            board.print();
-            changeCurrentPlayer();
-        }
-        return calculateWinner();
-    }
-
-    private String calculateWinner() {
+    @Override
+    String calculateWinner() {
         char winnerSymbol = board.getWinnerSymbol();
         return "The winner is " + winnerSymbol;
     }
 
-    private boolean gameFinished() {
+    @Override
+    void printBoard() {
+        board.print();
+    }
+
+    @Override
+    boolean gameFinished() {
         return board.checkHorizontals() ||
                 board.checkVerticals() ||
                 board.checkDiagonals() ||
                 board.allFieldsChecked();
     }
 
-    private void changeCurrentPlayer() {
+    @Override
+    public void changeCurrentPlayer() {
         if (currentPlayer == player1) {
             currentPlayer = player2;
         } else {
@@ -45,7 +44,8 @@ public class TicTacToe {
         }
     }
 
-    private void makeMove() {
+    @Override
+    public void makeMove() {
         String move = currentPlayer.makeMove();
 
         int row = move.charAt(0) - 48;

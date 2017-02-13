@@ -5,13 +5,13 @@ public class HumanPlayer implements Player {
     private String lastName;
     private int age;
     private char symbol;
-    private ConsoleReader consoleReader;
+    private ConsoleReaderImpl consoleReader;
 
     public HumanPlayer(String firstName,
                        String lastName,
                        int age,
                        char symbol,
-                       ConsoleReader consoleReader) {
+                       ConsoleReaderImpl consoleReader) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;

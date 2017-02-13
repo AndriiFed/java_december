@@ -3,14 +3,14 @@ package projects.game;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-public class ConsoleReaderImpl implements ConsoleReader {
+public class ConsoleReaderImpl {
 
   Scanner scanner =
       new Scanner(System.in, StandardCharsets.UTF_8.toString());
 
   private static ConsoleReaderImpl consoleReader;
 
-  public static ConsoleReader newInstance() {
+  public static ConsoleReaderImpl newInstance() {
     if (consoleReader == null) {
       consoleReader = new ConsoleReaderImpl();
     }
@@ -20,7 +20,6 @@ public class ConsoleReaderImpl implements ConsoleReader {
   private ConsoleReaderImpl() {
   }
 
-  @Override
   public String getData() {
     String move = scanner.next();
     return move;
