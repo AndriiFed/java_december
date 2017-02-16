@@ -7,18 +7,6 @@ public class HumanPlayer implements Player {
     private char symbol;
     private ConsoleReaderImpl consoleReader;
 
-    public HumanPlayer(String firstName,
-                       String lastName,
-                       int age,
-                       char symbol,
-                       ConsoleReaderImpl consoleReader) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.symbol = symbol;
-        this.consoleReader = consoleReader;
-    }
-
     public String getFirstName() {
         return firstName;
     }
@@ -85,5 +73,51 @@ public class HumanPlayer implements Player {
 
     public void setSymbol(char symbol) {
         this.symbol = symbol;
+    }
+
+    public static class Builder {
+        private String firstName;
+        private String lastName;
+        private int age;
+        private char symbol;
+        private ConsoleReaderImpl consoleReader;
+
+        public Builder firstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder lastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder age(int age) {
+            this.age = age;
+            return this;
+        }
+
+        public Builder symbol(char symbol) {
+            this.symbol = symbol;
+            return this;
+        }
+
+        public Builder consoleReader(ConsoleReaderImpl consoleReader) {
+            this.consoleReader = consoleReader;
+            return this;
+        }
+
+        public HumanPlayer build() {
+            HumanPlayer humanPlayer = new HumanPlayer(this);
+            return humanPlayer;
+        }
+    }
+
+    private HumanPlayer(Builder builder) {
+        this.firstName = builder.firstName;
+        this.lastName = builder.lastName;
+        this.age = builder.age;
+        this.symbol = builder.symbol;
+        this.consoleReader = builder.consoleReader;
     }
 }
