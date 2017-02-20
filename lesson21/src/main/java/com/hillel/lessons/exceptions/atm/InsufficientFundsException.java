@@ -1,0 +1,8 @@
+package com.hillel.lessons.exceptions.atm;
+
+public class InsufficientFundsException extends Exception {
+
+  public InsufficientFundsException(String message) {
+    super(message);
+  }
+}
