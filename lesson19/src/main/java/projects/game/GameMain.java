@@ -1,5 +1,7 @@
 package projects.game;
 
+import java.util.Arrays;
+
 public class GameMain {
 
     public static void main(String[] args) {
@@ -23,6 +25,5 @@ public class GameMain {
         String winner = ticTacToe.startGame();
 
         System.out.println(winner);
-
     }
 }
