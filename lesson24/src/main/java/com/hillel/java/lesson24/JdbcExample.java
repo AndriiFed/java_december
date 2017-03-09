@@ -53,4 +53,38 @@ public class JdbcExample {
 
     statement.execute();
   }
+
+  public void transactionExample(Connection connection) throws SQLException {
+    Statement statement = connection.createStatement();
+
+    connection.setAutoCommit(false);
+    try {
+      statement.executeUpdate("insert into students(name, sname) values('Sam', 'Doe')");
+      statement.executeUpdate("insert into students(name, sname) values('Dean', 'White')");
+      connection.commit();
+    } catch (Exception e) {
+      connection.rollback();
+    } finally {
+      connection.setAutoCommit(true);
+    }
+  }
+
+  public void batchExample(Connection connection) throws SQLException {
+    PreparedStatement preparedStatement =
+        connection.prepareStatement("insert into students(name, sname) values(?, ?)");
+
+    connection.setAutoCommit(false);
+
+    for (int i = 0; i < 10; i++) {
+      String name = "John";
+      String sname = "Sname" + i;
+      preparedStatement.setString(1, name);
+      preparedStatement.setString(2, sname);
+      preparedStatement.addBatch();
+    }
+
+    preparedStatement.executeBatch();
+
+    connection.setAutoCommit(true);
+  }
 }
